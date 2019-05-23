@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Contacts.Classes;
 using Xamarin.Forms;
+using SQLite;
 
 namespace Contacts
 {
@@ -20,7 +22,22 @@ namespace Contacts
 
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
+            Contact contact = new Contact()
+            {
+                Name = nameEntry.Text,
+                Lastname = LastnameEntry.Text,
+                Email = emailEntry.Text,
+                PhoneNumber = phoneNumberEntry.Text,
+                Address = addressEntry.Text
+            };
 
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath)) //Idisposable
+            {
+                //This syntax will auto-close the connection to SQL database
+                conn.CreateTable<Contact>();
+                int rowsAdded = conn.Insert(contact);
+
+            }
         }
     }
 }
