@@ -36,7 +36,6 @@ namespace Contacts
                 //This syntax will auto-close the connection to SQL database
                 conn.CreateTable<Contact>();
                 int rowsAdded = conn.Insert(contact);
-
             }
         }
     }
