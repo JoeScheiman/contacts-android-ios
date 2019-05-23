@@ -9,5 +9,8 @@
         <ToolbarItem Text="New"
                      Clicked="NewContactToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView x:Name="contactsListView"/>
+    </ContentPage.Content>
     
 </ContentPage>
